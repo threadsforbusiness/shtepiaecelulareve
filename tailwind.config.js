@@ -8,13 +8,14 @@ export default {
       },
       colors: {
         brand: {
-          red: '#f1c03f',
-          dark: '#0A0A0A',
-          muted: '#B3B3B3',
-          border: '#262626',
-          bg: '#151515',
+          red: '#D9A900',
+          ink: '#111111',
+          dark: '#111111',
+          muted: '#6B6B70',
+          border: '#E8E8EA',
+          bg: '#F7F7F8',
           whatsapp: '#25D366',
-          ring: '#3B82F6',
+          ring: '#D9A900',
         },
       },
       borderRadius: {

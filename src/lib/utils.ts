@@ -23,7 +23,7 @@ export function buildWhatsAppLink(
   const origin = typeof window !== 'undefined' ? window.location.origin : '';
   const productUrl = `${origin}/product/${product.slug}`;
   const message =
-    `Përshëndetje Smart Store Albania!\n` +
+    `Përshëndetje Shtëpia e Celulareve!\n` +
     `Dëshiroj të porosis:\n` +
     `Produkti: ${product.name}\n` +
     `Ngjyra: ${color}\n` +

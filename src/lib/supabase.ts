@@ -7,6 +7,6 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: { persistSession: false },
 });
 
-export const WHATSAPP_NUMBER = '355686005554';
-export const PHONE_DISPLAY = '068 600 5554';
-export const PHONE_TEL = '+355686005554';
+export const WHATSAPP_NUMBER = '355682555999';
+export const PHONE_DISPLAY = '+355 68 255 5999';
+export const PHONE_TEL = '+355682555999';

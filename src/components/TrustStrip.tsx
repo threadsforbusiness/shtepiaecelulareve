@@ -8,7 +8,7 @@ const ITEMS = [
 
 export default function TrustStrip() {
   return (
-    <section className="bg-brand-dark border-y border-brand-border">
+    <section className="bg-brand-bg border-y border-brand-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 justify-items-start">
           {ITEMS.map((item) => (
@@ -17,7 +17,7 @@ export default function TrustStrip() {
                 <item.icon className="w-6 h-6 text-brand-red" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-white">{item.title}</h3>
+                <h3 className="text-sm font-semibold text-brand-ink">{item.title}</h3>
                 <p className="text-xs text-brand-muted mt-0.5">{item.desc}</p>
               </div>
             </div>

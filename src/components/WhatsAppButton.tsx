@@ -1,7 +1,7 @@
 import { WHATSAPP_NUMBER } from '@/lib/supabase';
 
 export default function WhatsAppButton() {
-  const message = encodeURIComponent('Përshëndetje Smart Store Albania! Dëshiroj të di më shumë për produktet tuaja.');
+  const message = encodeURIComponent('Përshëndetje Shtëpia e Celulareve! Dëshiroj të di më shumë për produktet tuaja.');
   return (
     <a
       href={`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`}

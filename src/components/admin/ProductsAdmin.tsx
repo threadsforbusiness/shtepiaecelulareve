@@ -80,7 +80,7 @@ export default function ProductsAdmin() {
         <>
           <div className="bg-brand-bg border border-brand-border rounded-card overflow-hidden">
             <table className="w-full text-sm">
-              <thead className="bg-brand-dark">
+              <thead className="bg-brand-bg">
                 <tr className="text-left text-xs text-brand-muted">
                   <th className="px-4 py-3 font-medium">Produkti</th>
                   <th className="px-4 py-3 font-medium hidden sm:table-cell">Brand</th>
@@ -96,12 +96,12 @@ export default function ProductsAdmin() {
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-3">
                         {p.images[0] && <img src={p.images[0]} alt="" className="w-10 h-10 rounded object-cover" />}
-                        <span className="font-medium text-white">{p.name}</span>
+                        <span className="font-medium text-brand-ink">{p.name}</span>
                       </div>
                     </td>
                     <td className="px-4 py-3 hidden sm:table-cell text-brand-muted">{p.brand}</td>
                     <td className="px-4 py-3 hidden sm:table-cell text-brand-muted">{p.category}</td>
-                    <td className="px-4 py-3 font-semibold text-white">{formatPrice(p.price)}</td>
+                    <td className="px-4 py-3 font-semibold text-brand-ink">{formatPrice(p.price)}</td>
                     <td className="px-4 py-3 text-center hidden sm:table-cell">
                       <button
                         onClick={() => toggleActive(p)}
@@ -121,7 +121,7 @@ export default function ProductsAdmin() {
                         <button onClick={() => toggleActive(p)} className={`p-1.5 sm:hidden ${p.is_active ? 'text-green-600' : 'text-gray-400'}`}>
                           {p.is_active ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
                         </button>
-                        <button onClick={() => { setEditing(p); setShowForm(true); }} className="p-1.5 text-brand-muted hover:text-white">
+                        <button onClick={() => { setEditing(p); setShowForm(true); }} className="p-1.5 text-brand-muted hover:text-brand-ink">
                           <Pencil className="w-4 h-4" />
                         </button>
                         <button onClick={() => handleDelete(p.id)} className="p-1.5 text-brand-muted hover:text-brand-red">
@@ -144,14 +144,14 @@ export default function ProductsAdmin() {
                 <button
                   onClick={() => setPage((p) => Math.max(1, p - 1))}
                   disabled={safePage === 1}
-                  className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-white border border-brand-border rounded-lg hover:bg-brand-bg disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-brand-ink border border-brand-border rounded-lg hover:bg-brand-bg disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <ChevronLeft className="w-4 h-4" /> Mbrapa
                 </button>
                 <button
                   onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                   disabled={safePage === totalPages}
-                  className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-white border border-brand-border rounded-lg hover:bg-brand-bg disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="flex items-center gap-1 px-3 py-1.5 text-sm font-medium text-brand-ink border border-brand-border rounded-lg hover:bg-brand-bg disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   Përpara <ChevronRight className="w-4 h-4" />
                 </button>
@@ -244,9 +244,9 @@ function ProductForm({ product, onClose, onSaved }: { product: StoreProduct | nu
 
   return (
     <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4" onClick={onClose}>
-      <div className="bg-brand-bg rounded-card w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-brand-border" onClick={(e) => e.stopPropagation()}>
-        <div className="sticky top-0 bg-brand-bg border-b border-brand-border px-6 py-4 flex items-center justify-between">
-          <h2 className="text-base font-semibold text-white">{product ? 'Edito produktin' : 'Shto produkt'}</h2>
+      <div className="bg-white rounded-card w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-brand-border" onClick={(e) => e.stopPropagation()}>
+        <div className="sticky top-0 bg-white border-b border-brand-border px-6 py-4 flex items-center justify-between">
+          <h2 className="text-base font-semibold text-brand-ink">{product ? 'Edito produktin' : 'Shto produkt'}</h2>
           <button onClick={onClose}><X className="w-5 h-5 text-brand-muted" /></button>
         </div>
 
@@ -369,19 +369,19 @@ function ProductForm({ product, onClose, onSaved }: { product: StoreProduct | nu
             </div>
           </Field>
 
-          <label className="flex items-center gap-2 text-sm text-white">
+          <label className="flex items-center gap-2 text-sm text-brand-ink">
             <input type="checkbox" checked={form.featured} onChange={(e) => update('featured', e.target.checked)} />
             Produkt i veçantë (featured)
           </label>
 
-          <label className="flex items-center gap-2 text-sm text-white">
+          <label className="flex items-center gap-2 text-sm text-brand-ink">
             <input type="checkbox" checked={form.is_active} onChange={(e) => update('is_active', e.target.checked)} />
             I dukshëm në faqe (ON/OFF)
           </label>
         </div>
 
-        <div className="sticky bottom-0 bg-brand-bg border-t border-brand-border px-6 py-4 flex justify-end gap-3">
-          <button onClick={onClose} className="px-4 py-2 text-sm font-medium text-brand-muted hover:text-white">Anulo</button>
+        <div className="sticky bottom-0 bg-white border-t border-brand-border px-6 py-4 flex justify-end gap-3">
+          <button onClick={onClose} className="px-4 py-2 text-sm font-medium text-brand-muted hover:text-brand-ink">Anulo</button>
           <button onClick={handleSave} disabled={saving} className="px-5 py-2 bg-brand-red text-white rounded-lg text-sm font-medium hover:bg-brand-red/90 disabled:opacity-50">
             {saving ? 'Po ruhet...' : 'Ruaj'}
           </button>
@@ -413,7 +413,7 @@ function ColorEditor({ color, onChange, onRemove }: { color: ColorVariant; onCha
         <button onClick={onRemove} className="p-1.5 text-brand-muted hover:text-brand-red">
           <Trash2 className="w-4 h-4" />
         </button>
-        <button onClick={() => setExpanded(!expanded)} className="p-1.5 text-brand-muted hover:text-white">
+        <button onClick={() => setExpanded(!expanded)} className="p-1.5 text-brand-muted hover:text-brand-ink">
           {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
         </button>
       </div>
@@ -444,7 +444,7 @@ function ColorEditor({ color, onChange, onRemove }: { color: ColorVariant; onCha
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="text-xs font-medium text-white mb-1.5 block">{label}</label>
+      <label className="text-xs font-medium text-brand-ink mb-1.5 block">{label}</label>
       {children}
     </div>
   );

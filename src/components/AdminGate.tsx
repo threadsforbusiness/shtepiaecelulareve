@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { LogOut, Home } from 'lucide-react';
 import { adminLogin, adminLogout, isAdminAuthed } from '@/lib/adminAuth';
+import Logo from './Logo';
 
 export default function AdminGate({ children }: { children: ReactNode }) {
   const [authed, setAuthed] = useState(isAdminAuthed());
@@ -11,12 +12,12 @@ export default function AdminGate({ children }: { children: ReactNode }) {
 
   if (authed) {
     return (
-      <div className="min-h-screen bg-brand-bg">
-        <div className="border-b border-brand-border bg-brand-dark">
+      <div className="min-h-screen bg-white">
+        <div className="border-b border-brand-border bg-brand-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
             <Link to="/" className="flex items-center gap-2">
-              <img src="/img_logo.png" alt="Smart Store" className="h-7 w-auto" />
-              <span className="text-sm font-bold text-white hidden sm:inline">Admin</span>
+              <Logo className="shrink-0" />
+              <span className="text-sm font-bold text-brand-ink hidden sm:inline">Admin</span>
             </Link>
             <div className="flex items-center gap-4">
               <a href="/" className="text-xs text-brand-muted hover:text-brand-red flex items-center gap-1">
@@ -42,11 +43,11 @@ export default function AdminGate({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-brand-bg px-4">
       <div className="w-full max-w-sm">
-        <div className="bg-brand-bg border border-brand-border rounded-card p-8">
+        <div className="bg-white border border-brand-border rounded-card p-8">
           <div className="flex flex-col items-center mb-6">
-            <img src="/img_logo.png" alt="Smart Store" className="h-10 w-auto mb-3" />
-            <h1 className="text-lg font-bold text-white">Admin Panel</h1>
-            <p className="text-xs text-brand-muted mt-1">Smart Store Albania</p>
+            <Logo className="mb-3" />
+            <h1 className="text-lg font-bold text-brand-ink">Admin Panel</h1>
+            <p className="text-xs text-brand-muted mt-1">Shtëpia e Celulareve</p>
           </div>
           <form
             onSubmit={(e) => {
@@ -61,7 +62,7 @@ export default function AdminGate({ children }: { children: ReactNode }) {
             className="space-y-4"
           >
             <div>
-              <label className="text-xs font-medium text-white mb-1.5 block">Përdoruesi</label>
+              <label className="text-xs font-medium text-brand-ink mb-1.5 block">Përdoruesi</label>
               <input
                 type="text"
                 value={user}
@@ -71,7 +72,7 @@ export default function AdminGate({ children }: { children: ReactNode }) {
               />
             </div>
             <div>
-              <label className="text-xs font-medium text-white mb-1.5 block">Fjalëkalimi</label>
+              <label className="text-xs font-medium text-brand-ink mb-1.5 block">Fjalëkalimi</label>
               <input
                 type="password"
                 value={pass}
@@ -83,7 +84,7 @@ export default function AdminGate({ children }: { children: ReactNode }) {
             {error && <p className="text-xs text-brand-red">{error}</p>}
             <button
               type="submit"
-              className="w-full bg-brand-dark text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-brand-dark/90 transition-colors"
+              className="w-full bg-brand-red text-white py-2.5 rounded-lg text-sm font-semibold hover:bg-brand-red/90 transition-colors"
             >
               Hyni
             </button>

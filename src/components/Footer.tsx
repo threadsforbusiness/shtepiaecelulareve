@@ -1,23 +1,22 @@
 import { Link } from 'react-router-dom';
 import { Phone, MapPin } from 'lucide-react';
+import Logo from './Logo';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/supabase';
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-bg border-t border-brand-border mt-16">
+    <footer className="bg-brand-bg border-t border-brand-border mt-16 text-brand-ink">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 sm:gap-8">
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <img src="/img_logo.png" alt="Smart Store" className="h-9 w-auto" />
-            </Link>
+            <Logo className="mb-4" />
             <p className="text-sm text-brand-muted leading-relaxed">
-              Be smart, spend smart.
+              Teknologji e zgjuar për çdo ditë.
             </p>
           </div>
 
           <div className="sm:justify-self-end sm:min-w-48">
-            <h4 className="text-sm font-semibold text-white mb-4">Kontakt</h4>
+            <h4 className="text-sm font-semibold text-brand-ink mb-4">Kontakt</h4>
             <ul className="space-y-2 text-sm text-brand-muted">
               <li>
                 <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-2 hover:text-brand-red transition-colors">
@@ -33,7 +32,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-brand-border text-center text-xs text-brand-muted">
+        <div className="mt-10 pt-6 border-t border-brand-border text-center text-xs text-brand-muted">© 2026 Shtëpia e Celulareve. Të gjitha të drejtat e rezervuara.<span className="mx-2">·</span>
           Website u krijua nga{' '}
           <a
             href="https://webgreal.com"

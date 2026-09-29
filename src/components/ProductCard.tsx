@@ -8,7 +8,7 @@ export default function ProductCard({ product }: { product: StoreProduct }) {
   return (
     <Link
       to={`/product/${product.slug}`}
-      className="group flex flex-col bg-brand-bg border border-brand-border rounded-card overflow-hidden hover:border-brand-red/40 transition-all hover:shadow-sm"
+      className="group flex flex-col bg-white border border-brand-border rounded-card overflow-hidden hover:border-brand-red/40 transition-all hover:shadow-sm"
     >
       <div className="aspect-square bg-brand-bg overflow-hidden p-3 sm:p-4 flex items-center justify-center">
         <img
@@ -33,13 +33,13 @@ export default function ProductCard({ product }: { product: StoreProduct }) {
           </div>
         )}
 
-        <h3 className="text-sm font-medium text-white leading-snug line-clamp-2">{product.name}</h3>
+        <h3 className="text-sm font-medium text-brand-ink leading-snug line-clamp-2">{product.name}</h3>
 
         <div className="mt-auto">
           {product.old_price > product.price && product.price > 0 && (
             <p className="text-xs text-brand-muted line-through">{formatPrice(product.old_price)}</p>
           )}
-          <p className={`text-lg font-normal ${product.price > 0 ? 'text-white' : 'text-[#f1c03f]'}`}>
+          <p className={`text-lg font-normal ${product.price > 0 ? 'text-brand-ink' : 'text-brand-red'}`}>
             {product.price > 0 ? formatPrice(product.price) : 'Rezervo Tani'}
           </p>
           {savings > 0 && (

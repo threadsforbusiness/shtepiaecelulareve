@@ -30,7 +30,7 @@ function App() {
           <Route path="/product/:slug" element={<ProductDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy" element={<LegalPage title="Politika e Privatësisë" body={[
-            'Smart Store Albania respekton privatësinë tuaj. Të dhënat personale që na jepni përdoren vetëm për përpunimin e porosive dhe komunikimin me ju.',
+            'Shtëpia e Celulareve respekton privatësinë tuaj. Të dhënat personale që na jepni përdoren vetëm për përpunimin e porosive dhe komunikimin me ju.',
             'Ne nuk i shesim apo shpërndajmë të dhënat tuaja palëve të treta. Mund të kërkoni fshirjen e të dhënave tuaj në çdo kohë duke na kontaktuar.',
           ]} />} />
           <Route path="/cookies" element={<LegalPage title="Politika e Cookies" body={[

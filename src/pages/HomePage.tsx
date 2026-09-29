@@ -46,13 +46,13 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr] lg:grid-rows-2 gap-4 lg:gap-5 lg:p-4">
             <Link
               to={featuredCategory.href}
-              className="phone-featured-card group relative isolate h-64 sm:h-80 lg:h-[420px] rounded-card overflow-hidden border border-brand-border shadow-sm transition-transform duration-300 ease-out hover:scale-[1.02] sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-start-1 lg:row-span-2 flex flex-col"
+              className="phone-featured-card group relative isolate h-64 sm:h-80 lg:h-[420px] rounded-card overflow-hidden border border-brand-red shadow-sm transition-transform duration-300 ease-out hover:scale-[1.02] sm:col-span-2 lg:col-span-1 lg:col-start-1 lg:row-start-1 lg:row-span-2 flex flex-col"
               style={featuredCategory.image ? { backgroundImage: `url(${featuredCategory.image})` } : undefined}
             >
               <div className="p-6 sm:p-8 z-10">
-                <h2 className="text-2xl sm:text-3xl font-semibold text-white">{featuredCategory.name}</h2>
+                <h2 className="text-2xl sm:text-3xl font-semibold text-brand-ink">{featuredCategory.name}</h2>
                 <p className="text-sm text-brand-muted mt-1 max-w-xs">{featuredCategory.description}</p>
-                <span className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-white bg-brand-dark border border-brand-border px-4 py-2 rounded-full hover:bg-brand-red hover:text-white transition-colors">
+                <span className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-brand-ink bg-white border border-brand-border px-4 py-2 rounded-full hover:bg-brand-red hover:text-brand-ink transition-colors">
                   Shiko {featuredCategory.name} →
                 </span>
               </div>
@@ -69,7 +69,7 @@ export default function HomePage() {
                 <Link
                   key={cat.id}
                   to={cat.href}
-                  className={`group relative h-40 sm:h-44 lg:h-auto rounded-card overflow-hidden bg-brand-bg border border-brand-border ${positions[idx] || ''}`}
+                  className={`group relative h-40 sm:h-44 lg:h-auto rounded-card overflow-hidden bg-brand-bg border border-brand-red ${positions[idx] || ''}`}
                 >
                   <img src={cat.image} alt={cat.name} className="absolute inset-0 w-full h-full object-cover lg:object-contain group-hover:scale-105 transition-transform duration-300" />
                   <div className="category-card-overlay absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -85,7 +85,7 @@ export default function HomePage() {
 
       {/* Catalog with filter tabs */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-12">
-        <h2 className="text-xl sm:text-2xl font-medium text-white mb-6">Kerko sipas kategorive</h2>
+        <h2 className="text-xl sm:text-2xl font-medium text-brand-ink mb-6">Kerko sipas kategorive</h2>
 
         <div className="flex flex-nowrap gap-2 overflow-x-auto no-scrollbar scroll-smooth pb-2 mb-8 max-w-full">
           {FILTER_TABS.map((tab) => (
@@ -95,7 +95,7 @@ export default function HomePage() {
               className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                 activeTab === tab
                   ? 'bg-brand-dark text-white'
-                  : 'bg-brand-bg text-white hover:bg-brand-border'
+                  : 'bg-brand-bg text-brand-ink hover:bg-brand-border'
               }`}
             >
               {tab}
@@ -132,7 +132,7 @@ export default function HomePage() {
                     <div className="mt-4 flex justify-center">
                       <Link
                         to={categoryHref}
-                        className="inline-flex items-center gap-1 text-sm font-medium text-white bg-brand-bg border border-brand-border px-5 py-2 rounded-full hover:bg-brand-dark hover:text-white transition-colors"
+                        className="inline-flex items-center gap-1 text-sm font-medium text-brand-ink bg-white border border-brand-border px-5 py-2 rounded-full hover:bg-brand-bg transition-colors"
                       >
                         Shiko të gjitha produktet {brand} ({items.length})
                         <ChevronRight className="w-4 h-4" />

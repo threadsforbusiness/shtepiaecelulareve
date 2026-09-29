@@ -56,7 +56,7 @@ export default function ProductDetailPage() {
   if (!product) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20 text-center">
-        <h1 className="text-2xl font-semibold text-white">Produkti nuk u gjet</h1>
+        <h1 className="text-2xl font-semibold text-brand-ink">Produkti nuk u gjet</h1>
         <Link to="/" className="text-brand-red hover:underline mt-4 inline-block">Kthehu në faqe</Link>
       </div>
     );
@@ -69,7 +69,7 @@ export default function ProductDetailPage() {
   const waLink = buildWhatsAppLink(product, colorName, storageName, conditionName, currentPrice);
 
   return (
-    <div className="bg-brand-dark">
+    <div className="bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Image gallery */}
@@ -98,7 +98,7 @@ export default function ProductDetailPage() {
           <div className="lg:sticky lg:top-24 lg:self-start space-y-5">
             <div>
               <span className="text-xs text-brand-muted uppercase tracking-wider">{product.brand}</span>
-              <h1 className="text-2xl sm:text-3xl font-bold text-white mt-1">{product.name}</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-brand-ink mt-1">{product.name}</h1>
               {product.specs && <p className="text-sm text-brand-muted mt-2">{product.specs}</p>}
             </div>
 
@@ -108,19 +108,19 @@ export default function ProductDetailPage() {
                 {oldPrice > currentPrice && (
                   <p className="text-sm text-brand-muted line-through">{formatPrice(oldPrice)}</p>
                 )}
-                <p className="text-lg font-normal text-white">{formatPrice(currentPrice)}</p>
+                <p className="text-lg font-normal text-brand-ink">{formatPrice(currentPrice)}</p>
                 {savings > 0 && (
                   <p className="text-sm text-brand-red font-medium mt-1">Ju kurseni {formatPrice(savings)}</p>
                 )}
               </div>
             ) : (
-              <p className="text-lg font-normal text-[#f1c03f]">Rezervo Tani</p>
+              <p className="text-lg font-normal text-brand-red">Rezervo Tani</p>
             )}
 
             {/* Color selector */}
             {product.colors.length > 0 && (
               <div>
-                <h3 className="text-sm font-semibold text-white mb-2">Ngjyra: <span className="font-normal text-brand-muted">{colorName}</span></h3>
+                <h3 className="text-sm font-semibold text-brand-ink mb-2">Ngjyra: <span className="font-normal text-brand-muted">{colorName}</span></h3>
                 <div className="flex gap-2">
                   {product.colors.map((c, i) => (
                     <button
@@ -140,7 +140,7 @@ export default function ProductDetailPage() {
             {/* Storage selector */}
             {product.storage_options.length > 0 && (
               <div>
-                <h3 className="text-sm font-semibold text-white mb-2">Memoria</h3>
+                <h3 className="text-sm font-semibold text-brand-ink mb-2">Memoria</h3>
                 <div className="grid grid-cols-3 gap-2">
                   {product.storage_options.map((s, i) => (
                     <button
@@ -165,7 +165,7 @@ export default function ProductDetailPage() {
             {/* Condition selector */}
             {product.conditions.length > 0 && (
               <div>
-                <h3 className="text-sm font-semibold text-white mb-2">Cilësia</h3>
+                <h3 className="text-sm font-semibold text-brand-ink mb-2">Cilësia</h3>
                 <div className="grid grid-cols-2 gap-2">
                   {product.conditions.map((c, i) => (
                     <button
@@ -201,10 +201,10 @@ export default function ProductDetailPage() {
             {currentPrice > 0 && (
             <div className="border border-brand-border rounded-card p-4 bg-brand-bg">
               <div className="flex items-start gap-3">
-                <Calculator className="w-5 h-5 text-white shrink-0 mt-0.5" />
+                <Calculator className="w-5 h-5 text-brand-ink shrink-0 mt-0.5" />
                 <div>
                   <div className="flex items-center gap-2">
-                    <h4 className="text-sm font-semibold text-white">Paguani me</h4>
+                    <h4 className="text-sm font-semibold text-brand-ink">Paguani me</h4>
                     <img src="/Gemini_Generated_Image_acqofeacqofeacqo-removebg-preview copy.png" alt="iute" className="w-[76px] h-8 object-contain" />
                   </div>
                   <p className="text-xs text-brand-muted mt-1">iute ofron shërbim pagesash transparent dhe fleksibël për blerësit e zgjuar, të mundëson të blesh tani dhe të paguash më vonë me këste.</p>
@@ -213,9 +213,9 @@ export default function ProductDetailPage() {
               </div>
             </div>
             )}
-            <div className="flex items-center gap-2 text-sm text-white">
+            <div className="flex items-center gap-2 text-sm text-brand-ink">
               <Check className="w-5 h-5 text-brand-whatsapp" />
-              <ShieldCheck className="w-5 h-5 text-white" />
+              <ShieldCheck className="w-5 h-5 text-brand-ink" />
               <span className="font-medium">Garanci 24 muaj</span>
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function ProductDetailPage() {
         {/* Description */}
         {product.description && (
           <div className="mt-12 max-w-3xl">
-            <h2 className="text-lg font-semibold text-white mb-3">Përshkrimi</h2>
+            <h2 className="text-lg font-semibold text-brand-ink mb-3">Përshkrimi</h2>
             <p className="text-sm text-brand-muted leading-relaxed">{product.description}</p>
           </div>
         )}
@@ -232,7 +232,7 @@ export default function ProductDetailPage() {
         {/* Related products */}
         {related.length > 0 && (
           <div className="mt-16">
-            <h2 className="text-lg sm:text-xl font-medium text-white mb-6">Produkte të ngjashme</h2>
+            <h2 className="text-lg sm:text-xl font-medium text-brand-ink mb-6">Produkte të ngjashme</h2>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {related.map((p) => (
                 <ProductCard key={p.id} product={p} />

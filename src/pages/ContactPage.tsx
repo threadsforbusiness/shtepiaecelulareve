@@ -1,9 +1,7 @@
-import { Phone, Mail, MapPin, ExternalLink, Facebook, Instagram } from 'lucide-react';
-import { useLocations, useSettings } from '@/lib/hooks';
-import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/supabase';
+import { Instagram, MapPin, Phone, ExternalLink } from 'lucide-react';
 import TrustStrip from '@/components/TrustStrip';
 import PaymentStrip from '@/components/PaymentStrip';
-import type { SocialLink } from '@/lib/types';
+import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/supabase';
 
 function TikTokIcon({ className }: { className?: string }) {
   return (
@@ -13,100 +11,105 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
-function SocialIcon({ platform, className }: { platform: string; className?: string }) {
-  if (platform === 'facebook') return <Facebook className={className} />;
-  if (platform === 'instagram') return <Instagram className={className} />;
-  if (platform === 'tiktok') return <TikTokIcon className={className} />;
-  return <ExternalLink className={className} />;
-}
+const LOCATIONS = [
+  {
+    name: 'Shtëpia e Celulareve',
+    phone: PHONE_DISPLAY,
+    phoneLink: PHONE_TEL,
+    instagram: 'https://www.instagram.com/shtepia_e_celulareve',
+    tiktok: 'https://www.tiktok.com/@shtepia_e_celulareve',
+    maps: 'https://maps.app.goo.gl/TSSGBCdSkiMvYjVE6',
+  },
+  {
+    name: 'Mobile Lux',
+    phone: '+355 68 661 1128',
+    phoneLink: '+355686611128',
+    instagram: 'https://www.instagram.com/mobile_lux',
+    tiktok: 'https://www.tiktok.com/@mobile_lux',
+    maps: 'https://maps.app.goo.gl/SDs4tHHfucs1uqHW8',
+  },
+];
 
-function SocialLinks({ links }: { links: SocialLink[] }) {
-  if (!links || links.length === 0) return null;
+function SocialLinks({ instagram, tiktok }: { instagram: string; tiktok: string }) {
   return (
-    <div className="flex items-center gap-3 mt-2">
-      {links.map((s, i) => (
-        <a
-          key={i}
-          href={s.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-8 h-8 rounded-full bg-brand-bg flex items-center justify-center text-white hover:bg-brand-dark hover:text-white transition-colors"
-          aria-label={s.platform}
-        >
-          <SocialIcon platform={s.platform} className="w-4 h-4" />
-        </a>
-      ))}
+    <div className="flex items-center gap-3">
+      <a
+        href={instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        className="w-9 h-9 rounded-full bg-brand-bg flex items-center justify-center text-brand-ink hover:bg-brand-dark hover:text-white transition-colors"
+      >
+        <Instagram className="w-4 h-4" />
+      </a>
+      <a
+        href={tiktok}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="TikTok"
+        className="w-9 h-9 rounded-full bg-brand-bg flex items-center justify-center text-brand-ink hover:bg-brand-dark hover:text-white transition-colors"
+      >
+        <TikTokIcon className="w-4 h-4" />
+      </a>
     </div>
   );
 }
 
 export default function ContactPage() {
-  const { locations } = useLocations();
-  const { settings } = useSettings();
-
-  const mapSrc = 'https://www.google.com/maps?q=Rruga+e+Durrësit,+Tiranë,+Albania&q=Lake+View+Residence,+Tiranë,+Albania&z=13&output=embed';
-
   return (
     <div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <h1 className="text-3xl sm:text-4xl font-semibold text-white">Na kontaktoni</h1>
+          <h1 className="text-3xl sm:text-4xl font-semibold text-brand-ink">Na kontaktoni</h1>
           <p className="text-sm text-brand-muted mt-3">
-            Jemi këtu për t'ju ndihmuar. Na telefononi, na shkruani në WhatsApp, ose na vizitoni në një nga dyqanet tona.
+            Vizitoni një nga lokacionet tona ose na kontaktoni direkt.
           </p>
         </div>
 
-        {/* Contact info */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-          <a href={`tel:${PHONE_TEL}`} className="flex flex-col items-center gap-2 p-6 border border-brand-border rounded-card hover:border-brand-dark/20 transition-colors">
-            <Phone className="w-6 h-6 text-brand-red" />
-            <span className="text-sm font-semibold text-white">Telefon</span>
-            <span className="text-sm text-brand-muted">{PHONE_DISPLAY}</span>
-          </a>
-          <a href={`mailto:${settings?.email || 'info@smartstore.al'}`} className="flex flex-col items-center gap-2 p-6 border border-brand-border rounded-card hover:border-brand-dark/20 transition-colors">
-            <Mail className="w-6 h-6 text-brand-red" />
-            <span className="text-sm font-semibold text-white">Email</span>
-            <span className="text-sm text-brand-muted">{settings?.email || 'info@smartstore.al'}</span>
-          </a>
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-10">
+          {LOCATIONS.map((location) => (
+            <div key={location.name} className="border border-brand-border rounded-card bg-white p-6 sm:p-8 flex flex-col gap-5">
+              <h2 className="text-xl font-semibold text-brand-ink">{location.name}</h2>
 
-        {/* Store locations */}
-        <h2 className="text-xl font-semibold text-white mb-6">Dyqanet tona</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          {locations.map((loc) => (
-            <div key={loc.id} className="border border-brand-border rounded-card p-6 flex flex-col gap-3">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-brand-red shrink-0 mt-0.5" />
-                <div>
-                  <h3 className="text-base font-semibold text-white">{loc.name}</h3>
-                  <p className="text-sm text-brand-muted mt-1">{loc.address}</p>
-                </div>
-              </div>
-              <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-2 text-sm text-white hover:text-brand-red">
-                <Phone className="w-4 h-4" /> {loc.phone}
+              <a href={`tel:${location.phoneLink}`} className="flex items-center gap-3 text-sm text-brand-ink hover:text-brand-red transition-colors">
+                <Phone className="w-5 h-5 text-brand-red" />
+                {location.phone}
               </a>
+
+              <SocialLinks instagram={location.instagram} tiktok={location.tiktok} />
+
               <a
-                href={loc.maps_url}
+                href={location.maps}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-red hover:underline"
+                className="inline-flex items-center justify-center gap-2 bg-brand-dark text-white px-4 py-3 rounded-lg text-sm font-medium hover:bg-brand-red transition-colors"
               >
-                <ExternalLink className="w-4 h-4" /> Shiko në hartë
+                <MapPin className="w-4 h-4" />
+                Shiko në Google Maps
+                <ExternalLink className="w-4 h-4" />
               </a>
-              <SocialLinks links={loc.social_links || []} />
             </div>
           ))}
         </div>
 
-        {/* Embedded map with both store markers */}
-        <div className="rounded-card overflow-hidden border border-brand-border">
-          <iframe
-            title="Harta e dyqaneve"
-            src={mapSrc}
-            className="w-full h-[400px]"
-            loading="lazy"
-          />
-        </div>
+        <a
+          href={LOCATIONS[0].maps}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block rounded-card overflow-hidden border border-brand-border bg-brand-bg"
+        >
+          <div className="min-h-[320px] sm:min-h-[420px] flex flex-col items-center justify-center text-center px-6 relative">
+            <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'linear-gradient(135deg, transparent 0%, rgba(241,192,63,0.12) 50%, transparent 100%)' }} />
+            <div className="relative w-16 h-16 rounded-full bg-white border border-brand-border flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+              <MapPin className="w-8 h-8 text-brand-red" />
+            </div>
+            <h2 className="relative text-xl font-semibold text-brand-ink mt-5">Rruga e Durrësit</h2>
+            <p className="relative text-sm text-brand-muted mt-2">Shtëpia e Celulareve</p>
+            <span className="relative inline-flex items-center gap-2 mt-5 text-sm font-medium text-brand-red">
+              Hap në Google Maps <ExternalLink className="w-4 h-4" />
+            </span>
+          </div>
+        </a>
       </div>
 
       <TrustStrip />

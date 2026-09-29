@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Search, Menu, X, Phone } from 'lucide-react';
+import Logo from './Logo';
 import { useState } from 'react';
 import { PHONE_DISPLAY, PHONE_TEL } from '@/lib/supabase';
 
@@ -28,47 +29,45 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-brand-dark/95 backdrop-blur border-b border-brand-border">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-brand-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="relative grid grid-cols-3 items-center h-16 lg:flex lg:justify-between">
-          <div className="flex items-center gap-3 shrink-0 order-1 lg:order-1">
-            <button
-              onClick={() => setMobileOpen((v) => !v)}
-              className="lg:hidden p-1 text-white"
-              aria-label="Menu"
-            >
-              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-            <a href={`tel:${PHONE_TEL}`} className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-white hover:text-brand-red transition-colors">
+        <div className="flex items-center justify-between gap-6 min-h-16 py-3">
+          <div className="hidden lg:flex items-center gap-3 shrink-0">
+            <a href={`tel:${PHONE_TEL}`} className="flex items-center gap-1.5 text-sm font-medium text-brand-ink hover:text-brand-red transition-colors">
               <Phone className="w-4 h-4" />
               {PHONE_DISPLAY}
             </a>
           </div>
 
-          <Link to="/" className="flex items-center justify-self-center shrink-0 order-2 lg:order-2 lg:mr-6">
-            <img src="/img_logo.png" alt="Smart Store" className="block w-44 sm:w-40 h-auto object-contain" />
-          </Link>
+          <Logo className="order-1 lg:order-1 shrink-0" />
 
-          <nav className="hidden lg:flex items-center gap-7 lg:order-3">
+          <nav className="hidden lg:flex items-center gap-6 lg:order-2 flex-1">
             {NAV.map((item) => (
               <Link
                 key={item.href}
                 to={item.href}
-                className="text-sm font-medium text-white hover:text-brand-red transition-colors"
+                className="text-sm font-medium text-brand-ink hover:text-brand-red transition-colors"
               >
                 {item.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex items-center justify-self-end gap-3 order-3 lg:order-4">
+          <div className="flex items-center gap-3 order-3 lg:order-3 shrink-0">
             <button
               onClick={() => setSearchOpen((v) => !v)}
-              className="flex items-center gap-1.5 text-sm font-medium text-white hover:text-brand-red transition-colors"
+              className="flex items-center gap-1.5 text-sm font-medium text-brand-ink hover:text-brand-red transition-colors"
               aria-label="Kërko"
             >
               <Search className="w-5 h-5" />
               <span className="hidden sm:inline">Kërko</span>
+            </button>
+            <button
+              onClick={() => setMobileOpen((v) => !v)}
+              className="lg:hidden p-1 text-brand-ink"
+              aria-label="Menu"
+            >
+              {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
             <div className="hidden lg:block w-6" />
           </div>
@@ -94,12 +93,12 @@ export default function Header() {
                 key={item.href}
                 to={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="px-2 py-2.5 text-sm font-medium text-white hover:text-brand-red border-b border-brand-border/50"
+                className="px-2 py-2.5 text-sm font-medium text-brand-ink hover:text-brand-red border-b border-brand-border/50"
               >
                 {item.label}
               </Link>
             ))}
-            <a href={`tel:${PHONE_TEL}`} className="px-2 py-2.5 text-sm font-medium text-white flex items-center gap-2">
+            <a href={`tel:${PHONE_TEL}`} className="px-2 py-2.5 text-sm font-medium text-brand-ink flex items-center gap-2">
               <Phone className="w-4 h-4" /> {PHONE_DISPLAY}
             </a>
           </nav>

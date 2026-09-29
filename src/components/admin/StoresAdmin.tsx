@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Plus, Trash2 } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import type { StoreLocation, SocialLink } from '@/lib/types';
+import { PHONE_DISPLAY } from '@/lib/supabase';
 
 const PLATFORMS = ['instagram', 'tiktok', 'facebook', 'youtube', 'twitter'];
 
@@ -44,7 +45,7 @@ export default function StoresAdmin() {
     await supabase.from('store_locations').insert({
       name: 'Dyqan i ri',
       address: '',
-      phone: '068 600 5554',
+      phone: PHONE_DISPLAY,
       maps_url: '',
       social_links: [],
       sort_order: locations.length + 1,
@@ -56,7 +57,7 @@ export default function StoresAdmin() {
 
   return (
     <div className="space-y-4">
-      <button onClick={handleAdd} className="flex items-center gap-1.5 bg-brand-dark text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-dark/90">
+      <button onClick={handleAdd} className="flex items-center gap-1.5 bg-brand-red text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-red/90">
         <Plus className="w-4 h-4" /> Shto dyqan
       </button>
 
@@ -125,7 +126,7 @@ export default function StoresAdmin() {
             </div>
 
             <div className="flex justify-end gap-2">
-              <button onClick={() => saveRow(loc)} className="px-3 py-1.5 bg-brand-dark text-white rounded-lg text-xs font-medium">Ruaj</button>
+              <button onClick={() => saveRow(loc)} className="px-3 py-1.5 bg-brand-red text-white rounded-lg text-xs font-medium">Ruaj</button>
               <button onClick={() => handleDelete(loc.id)} className="p-1.5 text-brand-muted hover:text-brand-red"><Trash2 className="w-4 h-4" /></button>
             </div>
           </div>

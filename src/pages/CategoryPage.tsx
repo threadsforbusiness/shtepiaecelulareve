@@ -41,7 +41,7 @@ export default function CategoryPage() {
   return (
     <div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 pb-6">
-        <h1 className="text-3xl sm:text-4xl font-semibold text-center text-white uppercase tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-semibold text-center text-brand-ink uppercase tracking-tight">
           {category}
         </h1>
         <p className="text-center text-sm text-brand-muted mt-2">
@@ -58,7 +58,7 @@ export default function CategoryPage() {
               className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                 activeBrand === b
                   ? 'bg-brand-dark text-white'
-                  : 'bg-brand-bg text-white hover:bg-brand-border'
+                  : 'bg-brand-bg text-brand-ink hover:bg-brand-border'
               }`}
             >
               {b}

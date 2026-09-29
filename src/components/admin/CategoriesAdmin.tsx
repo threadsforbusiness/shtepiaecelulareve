@@ -70,7 +70,7 @@ export default function CategoriesAdmin() {
 
   return (
     <div className="space-y-4">
-      <button onClick={handleAdd} className="flex items-center gap-1.5 bg-brand-dark text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-dark/90">
+      <button onClick={handleAdd} className="flex items-center gap-1.5 bg-brand-red text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-red/90">
         <Plus className="w-4 h-4" /> Shto kategori
       </button>
 
@@ -145,7 +145,7 @@ export default function CategoriesAdmin() {
 
             {/* Footer row */}
             <div className="flex items-center justify-between">
-              <label className="flex items-center gap-1.5 text-xs text-white cursor-pointer">
+              <label className="flex items-center gap-1.5 text-xs text-brand-ink cursor-pointer">
                 <input
                   type="checkbox"
                   checked={cat.featured}
@@ -165,7 +165,7 @@ export default function CategoriesAdmin() {
                 )}
                 <button
                   onClick={() => saveRow(cat)}
-                  className="px-4 py-1.5 bg-brand-dark text-white rounded-lg text-xs font-medium hover:bg-brand-dark/90 transition-colors"
+                  className="px-4 py-1.5 bg-brand-red text-white rounded-lg text-xs font-medium hover:bg-brand-red/90 transition-colors"
                 >
                   Ruaj
                 </button>
