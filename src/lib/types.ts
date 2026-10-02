@@ -82,4 +82,4 @@ export type CategoryName = (typeof CATEGORIES)[number];
 export const BRANDS = ['Apple', 'Samsung', 'Xiaomi', 'Google', 'Huawei', 'OnePlus', 'Sony', 'Anker', 'JBL'] as const;
 export type BrandName = (typeof BRANDS)[number];
 
-export const STORAGE_PRESETS = ['64 GB', '128 GB', '128 GB eSIM', '256 GB', '256 GB eSIM', '512 GB', '512 GB eSIM', '1 TB', '1 TB eSIM', '2 TB eSIM'] as const;
+export const STORAGE_PRESETS = ['64 GB', '128 GB', '128 GB eSIM', '256 GB', '256 GB eSIM', '512 GB', '512 GB eSIM', '1 TB', '1 TB eSIM', '2 TB eSIM', '4GB/64GB', '4GB/128GB', '6GB/128GB', '6GB/256GB', '8GB/128GB', '8GB/256GB', '12GB/256GB', '12GB/512GB', '12GB/1TB', '16GB/1TB'] as const;
