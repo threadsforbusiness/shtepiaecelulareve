@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Check, Calculator, ShieldCheck } from 'lucide-react';
 import { useProduct, useProducts } from '@/lib/hooks';
-import { buildWhatsAppLink, computeVariantPrice, formatPrice } from '@/lib/utils';
+import { buildWhatsAppLink, computeVariantPrice, formatPrice, sortProducts } from '@/lib/utils';
 import ProductCard from '@/components/ProductCard';
 import TrustStrip from '@/components/TrustStrip';
 import PaymentStrip from '@/components/PaymentStrip';
@@ -35,7 +35,7 @@ export default function ProductDetailPage() {
 
   const related = useMemo(() => {
     if (!product) return [];
-    return products.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 8);
+    return sortProducts(products.filter((p) => p.category === product.category && p.id !== product.id)).slice(0, 8);
   }, [products, product]);
 
   if (loading) {

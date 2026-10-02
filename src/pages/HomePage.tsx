@@ -31,11 +31,7 @@ export default function HomePage() {
       if (!map.has(p.brand)) map.set(p.brand, []);
       map.get(p.brand)!.push(p);
     });
-    return Array.from(map.entries()).sort(([a], [b]) => {
-      if (a === 'Apple') return -1;
-      if (b === 'Apple') return 1;
-      return 0;
-    });
+    return Array.from(map.entries()).sort(([a], [b]) => a.localeCompare(b));
   }, [filteredProducts]);
 
   return (

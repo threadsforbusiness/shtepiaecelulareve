@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from './supabase';
+import { sortProducts } from './utils';
 import type { StoreSettings, StoreCategory, StoreProduct, StoreLocation } from './types';
 
 export function useSettings() {
@@ -64,7 +65,7 @@ export function useProducts() {
       .order('created_at', { ascending: false })
       .then(({ data }) => {
         if (active) {
-          setProducts((data as StoreProduct[]) || []);
+          setProducts(sortProducts((data as StoreProduct[]) || []));
           setLoading(false);
         }
       });

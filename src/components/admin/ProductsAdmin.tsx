@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Plus, Pencil, Trash2, X, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Eye, EyeOff } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { BRANDS, CATEGORIES, STORAGE_PRESETS, type StoreProduct, type ColorVariant, type StorageVariant, type ConditionVariant } from '@/lib/types';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, sortProducts } from '@/lib/utils';
 
 const EMPTY_PRODUCT = {
   slug: '',
@@ -57,10 +57,11 @@ export default function ProductsAdmin() {
     load();
   };
 
-  const totalPages = Math.ceil(products.length / ADMIN_PAGE_SIZE);
+  const sortedProducts = sortProducts(products);
+  const totalPages = Math.ceil(sortedProducts.length / ADMIN_PAGE_SIZE);
   const safePage = Math.min(page, totalPages) || 1;
   const pageStart = (safePage - 1) * ADMIN_PAGE_SIZE;
-  const pageProducts = products.slice(pageStart, pageStart + ADMIN_PAGE_SIZE);
+  const pageProducts = sortedProducts.slice(pageStart, pageStart + ADMIN_PAGE_SIZE);
 
   return (
     <div>
