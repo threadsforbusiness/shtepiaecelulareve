@@ -243,7 +243,7 @@ function ProductForm({ product, onClose, onSaved }: { product: StoreProduct | nu
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4">
       <div className="bg-white rounded-card w-full max-w-2xl max-h-[90vh] overflow-y-auto border border-brand-border" onClick={(e) => e.stopPropagation()}>
         <div className="sticky top-0 bg-white border-b border-brand-border px-6 py-4 flex items-center justify-between">
           <h2 className="text-base font-semibold text-brand-ink">{product ? 'Edito produktin' : 'Shto produkt'}</h2>
